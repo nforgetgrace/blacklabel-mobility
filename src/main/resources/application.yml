@@ -22,7 +22,7 @@ spring:
       data-locations: classpath:h2db/data.sql
 
 info:
-  module-name: blacklabel-api
+  module-name: blacklabel-mobility-api
   log-file-name: app.log
 
 # logging
