@@ -1,3 +1,4 @@
+
 server:
   port: 8181
 
@@ -7,7 +8,7 @@ spring:
       restart:
         enabled: true
   datasource:
-    url: jdbc:h2:~/mobility
+    url: jdbc:h2:~/blacklabel
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -18,8 +19,8 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:h2db/schema.sql
-      data-locations: classpath:h2db/data.sql
+      schema-locations: classpath:h2/schema.sql
+      data-locations: classpath:h2/data.sql
 
 info:
   module-name: blacklabel-mobility-api
@@ -27,3 +28,9 @@ info:
 
 # logging
 logging.config: classpath:logging/logback-local.xml
+
+#Mybatis 설정
+mybatis:
+  mapper-locations: mybatis/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
