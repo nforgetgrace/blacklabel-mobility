@@ -2,9 +2,20 @@ package com.gooks.blacklabel.api.domain.sample.dto;
 
 import lombok.*;
 
+
 @Data
 public class SampleDto {
 
-    int pk_sample_table;
-	String fd_sample;
+
+	@Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @AllArgsConstructor(access = AccessLevel.PROTECTED)
+    @Builder
+    public static class Response {
+
+		 private int pk_sample_table;
+		 private String fd_sample;
+        
+    }
+    
 }

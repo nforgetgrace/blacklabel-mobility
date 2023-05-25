@@ -4,10 +4,15 @@
 <mapper namespace="com.gooks.blacklabel.api.domain.sample.service.mapper.SampleMapper">
 
     <select id="getSampleData" 
-    resultType="com.gooks.blacklabel.api.domain.sample.dto.SampleDto">
+    resultType="com.gooks.blacklabel.api.domain.sample.dto.SampleDto$Response">
         SELECT * 
 		FROM TB_SAMPLE_TABLE
-		WHERE fd_sample = #{fd_sample};
+		WHERE FD_SAMPLE = #{param};
     </select>
+    
+    <delete id="deleteSampleData" parameterType="java.lang.String">
+        DELETE FROM TB_SAMPLE_TABLE
+         WHERE FD_SAMPLE = #{param}
+    </delete>
     
 </mapper>

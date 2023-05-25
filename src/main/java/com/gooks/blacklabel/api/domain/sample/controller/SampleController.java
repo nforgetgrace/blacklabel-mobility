@@ -3,6 +3,7 @@ package com.gooks.blacklabel.api.domain.sample.controller;
 import com.gooks.blacklabel.api.domain.sample.dto.SampleDto;
 import com.gooks.blacklabel.api.domain.sample.service.SampleService;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.data.rest.core.annotation.Description;
 import org.springframework.lang.NonNull;
@@ -29,9 +30,16 @@ public class SampleController {
 
     @GetMapping("/sample")
     @Description("샘플코드 입니다.")
-    public SampleDto getSampleData(@NonNull @RequestParam String param) {
+    public SampleDto.Response getSampleData(@NonNull @RequestParam String param) {
         log.info("필요한 로그는 여기에....");
+
         return sampleService.getSampleData(param);
 
-    }   
+    }
+    
+    @DeleteMapping("/delete")
+    @Description("샘플코드 입니다.")
+    public int deleteSampleData(@NonNull @RequestParam String param) {
+        return sampleService.deleteSampleData(param);
+    }
 }
