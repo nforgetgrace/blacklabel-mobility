@@ -5,11 +5,20 @@ values (
     1
     );
 
+
 INSERT INTO tb_device (
-    pk_device   
+    pk_device
+    ,fd_device_type
+    ,fd_device_status
+    ,fd_device_soc
+    ,fd_device_serial
     ) 
 values (
     1
+    ,'KICKBOARD'
+    ,'IDLE'
+    ,'0'
+    ,'cf16c374-c549-4f05-9397-1c337398ed29'
     );
 
 INSERT INTO tb_using (

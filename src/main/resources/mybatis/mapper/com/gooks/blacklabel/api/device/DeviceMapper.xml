@@ -3,12 +3,58 @@
 
 <mapper namespace="com.gooks.blacklabel.api.domain.device.service.mapper.DeviceMapper">
 
-    <select id="getSampleData" 
+    <select id="getDeviceList" 
+    resultType="com.gooks.blacklabel.api.domain.device.dto.DeviceDto$Response">
+	    SELECT * 
+        FROM TB_DEVICE
+    </select>
+    
+    <select id="getDevice" 
     resultType="com.gooks.blacklabel.api.domain.device.dto.DeviceDto$Response">
         SELECT * 
-		FROM TB_SAMPLE_TABLE
-		WHERE FD_SAMPLE = #{param};
+		FROM TB_DEVICE
+		WHERE PK_DEVICE = #{request};
     </select>
+
+    <insert id="registDevice" parameterType="com.gooks.blacklabel.api.domain.device.dto.DeviceDto$Request">
+        INSERT INTO TB_DEVICE(
+        	FD_DEVICE_TYPE
+			,FD_DEVICE_STATUS
+          	,FD_DEVICE_SOC
+          	,FD_DEVICE_SERIAL
+        )VALUES(
+    		#{fd_device_type}
+            ,#{fd_device_status}
+            ,#{fd_device_soc}
+            ,#{fd_device_serial}
+        )
+    </insert>    
+    
+    <update id="updateDevice" parameterType="com.gooks.blacklabel.api.domain.device.dto.DeviceDto$Request">
+        UPDATE TB_DEVICE
+          SET FD_DEVICE_TYPE = #{fd_device_type}
+            ,FD_DEVICE_STATUS = #{fd_device_status}
+            ,FD_DEVICE_SOC = #{fd_device_soc}            
+            ,FD_DEVICE_SERIAL = #{fd_device_serial}    
+        WHERE PK_DEVICE = #{pk_device}
+    </update>
+    
+    <delete id="deleteDevice" parameterType="java.lang.Integer">
+        DELETE FROM TB_DEVICE
+        WHERE PK_DEVICE = #{request}
+    </delete>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <delete id="deleteSampleData" parameterType="java.lang.String">
         DELETE FROM TB_SAMPLE_TABLE
