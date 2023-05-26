@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.gooks.blacklabel.api.domain.sample.service.mapper.SampleMapper">
+<mapper namespace="com.gooks.blacklabel.api.domain.device.service.mapper.DeviceMapper">
 
     <select id="getSampleData" 
-    resultType="com.gooks.blacklabel.api.domain.sample.dto.SampleDto$Response">
-        SELECT *
+    resultType="com.gooks.blacklabel.api.domain.device.dto.DeviceDto$Response">
+        SELECT * 
 		FROM TB_SAMPLE_TABLE
-		WHERE FD_SAMPLE = #{param}
+		WHERE FD_SAMPLE = #{param};
     </select>
     
     <delete id="deleteSampleData" parameterType="java.lang.String">

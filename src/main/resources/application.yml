@@ -32,5 +32,5 @@ logging.config: classpath:logging/logback-local.xml
 #Mybatis 설정
 mybatis:
   mapper-locations: mybatis/**/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
+  #configuration:
+    #map-underscore-to-camel-case: true
