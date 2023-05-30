@@ -67,6 +67,7 @@ CREATE TABLE tb_coopon (
 	pk_coopon bigint auto_increment, 
 	fd_coopon_name varchar(255),
 	fd_coopon_discount_price varchar(100),
+	fd_use_yn varchar(10),
 	primary key (pk_coopon) 
 );
 
@@ -74,8 +75,12 @@ CREATE TABLE tb_coopon (
 DROP TABLE IF EXISTS tb_coopon_member;
 CREATE TABLE tb_coopon_member ( 
 	pk_coopon_member bigint auto_increment, 
-	fk_member varchar(100),
 	fk_coopon varchar(100),
+	fk_member varchar(100),
+	fd_coopon_member_regist_date varchar(100),
+	fd_coopon_member_start_date varchar(100),
+	fd_coopon_member_end_date varchar(100),
+	fd_coopon_member_use_yn varchar(10),
 	primary key (pk_coopon_member) 
 );
 
