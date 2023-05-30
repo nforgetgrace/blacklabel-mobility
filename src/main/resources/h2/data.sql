@@ -1,8 +1,28 @@
 INSERT INTO tb_member (
     pk_member
+    ,fd_member_mobile
+    ,fd_member_nick
+    ,fd_member_birth_year
+    ,fd_member_gender
+    ,fd_member_push_yn
+    ,fd_member_join_date
+    ,fd_member_login_date
+    ,fd_member_status
+    ,fd_member_update_date
+    ,fd_member_active_date
     ) 
 values (
     1
+    ,'012-3456-7890'
+    ,'smartX'
+    ,'2023-01-01'
+    ,'male'
+    ,'yes'
+    ,'2023-05-28'
+    ,'2023-05-28'
+    ,'IDLE'
+    ,'2023-05-28'
+    ,'2023-05-28'
     );
 
 

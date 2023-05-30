@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gooks.blacklabel.api.domain.member.service.mapper.MemberMapper">
+
+    <select id="getMemberList" 
+    resultType="com.gooks.blacklabel.api.domain.member.dto.MemberDto$Response">
+	    SELECT * 
+        FROM TB_MEMBER
+    </select>
+    
+    <select id="getMember"  
+    resultType="com.gooks.blacklabel.api.domain.member.dto.MemberDto$Response">
+        SELECT * 
+		FROM TB_MEMBER
+		WHERE PK_MEMBER = #{request};
+    </select>
+    
+    <insert id="registMember" parameterType="com.gooks.blacklabel.api.domain.member.dto.MemberDto$Request">
+		INSERT INTO TB_MEMBER(
+			FD_MEMBER_MOBILE
+			,FD_MEMBER_NICK
+			,FD_MEMBER_BIRTH_YEAR
+			,FD_MEMBER_GENDER
+			,FD_MEMBER_PUSH_YN
+			,FD_MEMBER_JOIN_DATE
+			,FD_MEMBER_LOGIN_DATE
+			,FD_MEMBER_STATUS
+			,FD_MEMBER_UPDATE_DATE
+			,FD_MEMBER_ACTIVE_DATE
+		)VALUES(
+			#{fd_member_mobile}
+			,#{fd_member_nick}
+			,#{fd_member_birth_year}
+			,#{fd_member_gender}
+			,#{fd_member_push_yn}
+			,#{fd_member_join_date}
+			,#{fd_member_login_date}
+			,#{fd_member_status}
+			,#{fd_member_update_date}
+			,#{fd_member_active_date} 
+		)
+	</insert>
+    
+ 	<update id="updateMember" parameterType="com.gooks.blacklabel.api.domain.member.dto.MemberDto$Request">
+        UPDATE TB_MEMBER            
+          SET FD_MEMBER_MOBILE = #{fd_member_mobile}
+			,FD_MEMBER_NICK = #{fd_member_nick}
+			,FD_MEMBER_BIRTH_YEAR = #{fd_member_birth_year}
+			,FD_MEMBER_GENDER = #{fd_member_gender}
+			,FD_MEMBER_PUSH_YN = #{fd_member_push_yn}
+			,FD_MEMBER_JOIN_DATE = #{fd_member_join_date}
+			,FD_MEMBER_LOGIN_DATE = #{fd_member_login_date}
+			,FD_MEMBER_STATUS = #{fd_member_status}	
+			,FD_MEMBER_UPDATE_DATE = #{fd_member_update_date}
+			,FD_MEMBER_ACTIVE_DATE = #{fd_member_active_date} 
+        WHERE PK_MEMBER = #{pk_member}
+    </update>   
+
+    <delete id="deleteMember" parameterType="java.lang.Integer">
+        DELETE FROM TB_MEMBER
+        WHERE PK_MEMBER = #{request}
+    </delete>
+
+</mapper>
