@@ -20,13 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * <pre>
- * com.gooks.blacklabel.api.domain.sample.controller
- * </pre>
- * 
- * @설명 원준씨를 위한 샘플코드
- */
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/device")
