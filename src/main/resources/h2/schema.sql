@@ -32,7 +32,7 @@ CREATE TABLE tb_using (
 	fk_member varchar(50),
 	fk_device varchar(50),
 	fd_using_date_start varchar(50),
-	fd_using_date_end varchar(50),
+	fd_using_date_end datetime,
 	fd_using_total_min varchar(50),
 	fd_using_total_price varchar(100),
 	primary key (pk_using) 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gooks.blacklabel.api.domain.using.service.mapper.UsingMapper">
+
+	<select id="getUsingList" resultType="com.gooks.blacklabel.api.domain.using.dto.UsingDto$Response">
+		SELECT *
+		FROM TB_USING		
+	</select>
+	
+	<select id="getUsing" resultType="com.gooks.blacklabel.api.domain.using.dto.UsingDto$Response">
+		SELECT * 
+		FROM TB_USING
+		WHERE PK_USING = #{request};
+	</select>
+	
+	<insert id="useUsing" parameterType="com.gooks.blacklabel.api.domain.using.dto.UsingDto$Request">
+		INSERT INTO TB_USING(
+			FK_MEMBER
+			,FK_DEVICE
+			,FD_USING_DATE_START
+
+		)VALUES(
+			#{fk_member}
+			,#{fk_device}
+			,DATEADD(MINUTE, -30, now())
+		)
+	</insert>
+	
+	<update id="returnUsing" parameterType="com.gooks.blacklabel.api.domain.using.dto.UsingDto$Request">
+		UPDATE TB_USING
+			SET FD_USING_DATE_END = now()
+				,FD_USING_TOTAL_MIN = TIMESTAMPDIFF(MINUTE,DATEADD(MINUTE, -30, now()) , now())
+				,FD_USING_TOTAL_PRICE = (TIMESTAMPDIFF(MINUTE,DATEADD(MINUTE, -30, now()) , now())) * 200  
+		WHERE PK_USING = #{pk_using}
+	</update>
+
+</mapper>

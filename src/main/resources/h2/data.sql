@@ -41,11 +41,42 @@ values (
     ,'cf16c374-c549-4f05-9397-1c337398ed29'
     );
 
+-- INSERT INTO tb_using (
+--     pk_using
+--     ,fk_member
+--     ,fk_device
+--     ,fd_using_date_start
+--     ,fd_using_date_end
+--     ,fd_using_total_min
+--     ,fd_using_total_price
+--     ) 
+-- values (
+--     1
+--     ,'1'
+--     ,'1'
+--     ,'2023-05-30 15:00:00'
+--     ,'2023-05-30 15:30:00'
+--     ,'30'
+--     ,'3000'    
+--     );
+
 INSERT INTO tb_using (
     pk_using
+    ,fk_member
+    ,fk_device
+    ,fd_using_date_start
+    ,fd_using_date_end
+    ,fd_using_total_min
+    ,fd_using_total_price
     ) 
 values (
-    1    
+    1
+    ,'1'
+    ,'1'
+    ,DATEADD(MINUTE, -10, now())
+    ,now()
+    ,TIMESTAMPDIFF(MINUTE,DATEADD(MINUTE, -10, now()) , now())
+    ,(TIMESTAMPDIFF(MINUTE,DATEADD(MINUTE, -10, now()) , now())) * 200  
     );
 
 INSERT INTO tb_payment (
