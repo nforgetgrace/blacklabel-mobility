@@ -1,3 +1,15 @@
+DROP TABLE IF EXISTS member;
+CREATE TABLE member ( 	
+	member_id varchar(100),
+	member_password varchar(100)
+);
+
+DROP TABLE IF EXISTS member_roles;
+CREATE TABLE member_roles (	
+	member_member_id varchar(100),
+	roles varchar(100)
+);
+
 DROP TABLE IF EXISTS tb_member;
 CREATE TABLE tb_member ( 
 	pk_member bigint auto_increment, 

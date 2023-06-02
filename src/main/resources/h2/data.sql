@@ -1,3 +1,22 @@
+INSERT INTO member (
+    member_id,
+    member_password   
+    ) 
+values (
+    'member_A',
+    '1234'
+    );
+
+
+INSERT INTO member_roles (
+    member_member_id,
+    roles
+    ) 
+values (
+    'member_A',
+    'USER'
+    );
+
 INSERT INTO tb_member (
     pk_member
     ,fd_member_mobile
