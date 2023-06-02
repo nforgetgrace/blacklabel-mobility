@@ -4,8 +4,8 @@
 <mapper namespace="com.gooks.blacklabel.common.security.domain.AuthMemberMapper">
     <select id="findByMemberId"  
     resultType="com.gooks.blacklabel.common.security.domain.AuthMember">
-        SELECT * 
-		FROM MEMBER
-		WHERE MEMBER_ID = #{request};
+		SELECT A.MEMBER_ID, A.MEMBER_PASSWORD, B.ROLES
+		FROM MEMBER AS A, MEMBER_ROLES AS B
+		WHERE A.MEMBER_ID = #{request};
     </select>
 </mapper>

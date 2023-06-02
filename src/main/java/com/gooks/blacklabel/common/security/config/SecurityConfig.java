@@ -11,6 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.gooks.blacklabel.common.security.filter.JwtAuthenticationFilter;
+import com.gooks.blacklabel.common.security.jwtUtil.AuthEntryPointJwt;
 import com.gooks.blacklabel.common.security.jwtUtil.JwtTokenProvider;
 
 import lombok.RequiredArgsConstructor;
@@ -22,15 +23,10 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
  
     private final JwtTokenProvider jwtTokenProvider;
+    private final AuthEntryPointJwt unauthorizedHandler;
  
     private static final String[] AUTH_WHITE_LIST = {
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/v2/api-docs/**",
-            "/swagger-resources/**",
             "/h2-console/**",
-            "/console/**",
-            "/account/**",
             "/members/login"
     };
     
@@ -39,14 +35,14 @@ public class SecurityConfig {
         http
             .httpBasic().disable()
             .csrf().disable()
+            .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+            .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/h2-console/**").permitAll()
-            .antMatchers("/members/login").permitAll()                
-            .antMatchers("/members/test").hasRole("USER")
+            .antMatchers(AUTH_WHITE_LIST).permitAll()                          
             .anyRequest().authenticated()
-            .and()
+            .and()            
             .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
             .headers().frameOptions().disable();
         return http.build();

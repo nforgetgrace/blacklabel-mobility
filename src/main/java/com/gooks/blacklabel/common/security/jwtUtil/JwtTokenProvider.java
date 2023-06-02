@@ -74,7 +74,7 @@ public class JwtTokenProvider {
         // 토큰 복호화
         Claims claims = parseClaims(accessToken);
  
-        if (claims.get("auth") == null) {
+        if (claims.get("auth") == null || claims.get("auth").equals("")) {
             throw new RuntimeException("권한 정보가 없는 토큰입니다.");
         }
  

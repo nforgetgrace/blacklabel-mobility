@@ -1,5 +1,8 @@
 package com.gooks.blacklabel.common.security.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +26,13 @@ public class AuthMemberController {
         String password = memberLoginRequestDto.getPassword();
         TokenInfo tokenInfo = memberService.login(memberId, password);
         return tokenInfo;
+    }
+    
+    @PostMapping("/test")
+    public Object test() {
+
+    	Map<String, String> rst = new HashMap<>();
+    	rst.put("결과", "success");
+        return rst;
     }
 }

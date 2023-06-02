@@ -24,13 +24,14 @@ public class AuthMember implements UserDetails {
 
     private String member_password;
 
-    private List<String> roles = new ArrayList<>();
+    private String roles;
  
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream()
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+    	Collection<GrantedAuthority> collectors = new ArrayList<>();
+		collectors.add(()->{return roles;}); //add에 들어올 파라미터는 GrantedAuthority밖에 없으니 
+		
+		return collectors;
     }
  
     @Override
