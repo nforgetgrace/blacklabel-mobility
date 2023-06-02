@@ -26,6 +26,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException.Unauthorized;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
@@ -74,6 +75,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(Exception e) {
         return buildResponse(e, CommonErrorCode.UNHANDLED_ERROR, e.getMessage());
+    }
+    
+    /**
+     * Unauthorized
+     */
+    @ExceptionHandler(Unauthorized.class)
+    public ResponseEntity<ErrorResponse> handleException(Unauthorized e) {
+        return buildResponse(e, CommonErrorCode.UNAUTHORIZED, e.getMessage());
     }
 
 

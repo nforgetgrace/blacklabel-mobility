@@ -22,9 +22,11 @@ public class AuthMemberController {
  
     @PostMapping("/login")
     public TokenInfo login(@RequestBody MemberLoginRequestDto memberLoginRequestDto) {
+    	
         String memberId = memberLoginRequestDto.getMemberId();
         String password = memberLoginRequestDto.getPassword();
         TokenInfo tokenInfo = memberService.login(memberId, password);
+        
         return tokenInfo;
     }
     
@@ -34,5 +36,6 @@ public class AuthMemberController {
     	Map<String, String> rst = new HashMap<>();
     	rst.put("결과", "success");
         return rst;
+        
     }
 }

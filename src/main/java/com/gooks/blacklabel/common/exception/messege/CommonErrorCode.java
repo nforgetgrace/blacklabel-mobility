@@ -24,7 +24,8 @@ public enum CommonErrorCode implements ErrorCode{
     ILLEGAL_ARGUMENT("COMMON_004","정상적인 요청값이 아닙니다. 요청값을 확인해 주세요."),
     INTERNAL_ERROR("COMMON_005","서비스 처리중 문제가 발생했습니다. 서버관리자에게 문의해 주세요.", HttpStatus.INTERNAL_SERVER_ERROR),
     SQL_VIOLATION("COMMON_006","데이터베이스와 연동하는 중에 오류가 발생하였습니다. 서버관리자에게 문의해 주세요.", HttpStatus.INTERNAL_SERVER_ERROR),
-    NON_LOGIN_STATUS("COMMON_007", "로그인 상태가 아닙니다. 로그인 후 다시 시도해주세요.", HttpStatus.NOT_IMPLEMENTED)
+    NON_LOGIN_STATUS("COMMON_007", "로그인 상태가 아닙니다. 로그인 후 다시 시도해주세요.", HttpStatus.NOT_IMPLEMENTED),
+    UNAUTHORIZED("COMMON_008", "인가되지 않은 요청입니다.", HttpStatus.UNAUTHORIZED)
     ;
 
     String code;
