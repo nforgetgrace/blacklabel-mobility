@@ -22,6 +22,10 @@ spring:
       schema-locations: classpath:h2/schema.sql
       data-locations: classpath:h2/data.sql
 
+jwt:
+  secret: VlwEyVBsYt9V7zq57TejMnVUyzblYcfPQye08f7MGVA9XkHa
+
+
 info:
   module-name: blacklabel-mobility-api
   log-file-name: app.log
